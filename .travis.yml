@@ -15,8 +15,9 @@ script:
   - diff -u <(echo -n) <(gofmt -d .)
   - go vet $(go list ./... | grep -v /vendor/)
   - go test -v -race ./...
-  - if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="confluence-space-pdf-export.."
-    -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+  # Only build binaries from the latest Go release.
+  - if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="confluence-space-pdf-export.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+
 deploy:
   provider: releases
   api_key:
