@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 )
@@ -175,7 +176,7 @@ func DownloadFile(url, username, password, spaceKey, exportLocation string) erro
 	}
 	defer Close(response.Body)
 
-	out, err := os.Create(fmt.Sprintf("%s/%s-%s", exportLocation, spaceKey, time.Now().Format("2006-01-02 15:04:05")))
+	out, err := os.Create(filepath.FromSlash(fmt.Sprintf("%s/%s-%s.pdf", exportLocation, spaceKey, time.Now().Format("2006-01-02-150405"))))
 	if err != nil {
 		return err
 	}
