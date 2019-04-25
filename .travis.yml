@@ -4,10 +4,6 @@ matrix:
   include:
   - go: 1.x
     env: LATEST=true
-  - go: 1.7.x
-  - go: 1.8.x
-  - go: 1.9.x
-  - go: 1.10.x
   - go: 1.11.x
   - go: tip
   allow_failures:
@@ -26,10 +22,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: JvN9U+zMWZ/yaji1RfYd2dbuLFrpxumKrXl5HArQoHkfb43Rw0v8tri2DBGMjmHY6bWRTfIQMXE9avrbsdLo5eB0njJMEwgOq31CRD15Tx+3PwbYs3VxKx+mwXdCTIaMTJ2f//vmvu2cbVvi+DLwsSKjr11KDrkuzshXMK0CmD4rIBCxMa6gUJFx9yT47xyF2q1wPrWAN3oeLv09bNEkMuL4VOmjCOpy82zYRJl0mg/vbz2P3SNqvDJcoPzkLOgk5Rgz+svRoTEE0fOca8THwij4sj+aTQmM84J0t8O5VgV/5oLvNC4VfTCudVMG5HCbr7gXd1L5fqyKhtlrXNPJq6DOAlfYZTyG/p2CYPdJQONLJoW1831r+s/Vb+TjHV+iDN0UgTFXA7IltXF87cI2KWmv2dh8VV1ADofL9MnIwUHj3QpVlgbbpiFW6ul94T2o3uH/cIjPfl/oOmwBBBszszZHdLMIeE7j9bGqkbmiKFM0MPtn/mZUORJDpBLCMnduyIJWB0wg/BqANbeb7E91RLTh1+a5hVG8oUYJASOj+7KfEO3pQtg/kuVABvqq8XvTc7It2VpC6QZp7MOcsIRr71ZrlBHGRKwDv+cvRF6K1YUq/pE11+LG+ejOQqdTALFQ2FfBX4ezRuKlRcrjQy/0rMSWC5uiUxJv1Ej6yaBLBK0=
-  file:
-    - confluence-space-pdf-export.windows.amd64.exe
-    - confluence-space-pdf-export.darwin.amd64
-    - confluence-space-pdf-export.linux.amd64
+    secure: NxkJnUMZx1NL5c2tfDw99JtA8Rc356SAkkwIO69SotK+YCuzsJFnci49ix32T3qL7LrytP1ogrzQy9qJbk+9ywTg7x1FRKGGOHsrxsePJNSVyOuaDX6AziqMYYo32C84T9OPBLo0I4uOCj5VbtyhFn1uzANUGtuESAlJYWZhbQGiblUS5AAJtkZhGaqlcdIniAR2GzgCdzK5rKcg9VSoKs9/vUj7fHi7qgnUgPoSBuZFWB3lml5L6alTR61L1m6nXeOumGj+UemcK4otHPgAryjDcYid7nmGzWRCQV4hvZoYOvApDHz3coXhOr4r+bgiUVi+qkSvhdBA1lL5OAYlEkk5giVYIvCWQBJT5tSslqBdqn4mxaoWj4+AfsBVmWMR/Pzb2phizUIWsyiDePeEXiO8sIgI95Kner/vrKBlIFEfGojIH2D2xjrD4KO56LWlFHg3rjaEcxH0RDfGu876hAtRefD2sHyegbELSpEOB9bEj6TgtTjWFwXKo8bOKq4zA8f32PyghHLTsqMcLoFWJzm9k32bD9W1m+DIPK16BqPvQQ/YM6ycEoZxVhZs0RWTiAmHcNWpFRkZ+OByX9+vOwJScTGYCVjwagxHzKTYpys5pqmviH+zp6IRiLy6Astvc6S2p6nb7c+2BZ/gWnp15SK2pfd0FERwbsVqtFEtviU=
+  file: confluence-space-pdf-export.windows.amd64.exe
   on:
     repo: chrisbbe/Confluence-Space-PDF-Export
