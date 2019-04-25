@@ -2,25 +2,31 @@ language: go
 sudo: false
 matrix:
   include:
-  - go: 1.x
-    env: LATEST=true
-  - go: 1.11.x
-  - go: tip
+    - go: 1.x
+      env: LATEST=true
+    - go: 1.11.x
+    - go: tip
   allow_failures:
-  - go: tip
+    - go: tip
 before_install:
-- go get github.com/mitchellh/gox
+  - go get github.com/mitchellh/gox
 script:
-- go get -t -v ./...
-- diff -u <(echo -n) <(gofmt -d .)
-- go vet $(go list ./... | grep -v /vendor/)
-- go test -v -race ./...
-- if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="confluence-space-pdf-export.."
-  -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+  - go get -t -v ./...
+  - diff -u <(echo -n) <(gofmt -d .)
+  - go vet $(go list ./... | grep -v /vendor/)
+  - go test -v -race ./...
+  - if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="confluence-space-pdf-export.."
+    -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 deploy:
   provider: releases
   api_key:
     secure: bnfjrwM9OGbk/h3YW6vZIrmK9J2cfELsj6QMTgAevKyA0kBHvmZdVu5NUkkec3BkdSm16RFWZs3Ef6plYx4BHvn2lLi3Noq6Z+GP3yZX8pHvJrm5uVhrzdJCKSEUt7utX/gkFsDcPUJesNYMPHQ5DODsiVesAkeSBUvA2eUpacNQ3/y8rXfDq/XH+7EFcBmJ3Sm1PoBqUxnLny1B7DoiWfQkuC7eX1RoCliRNjNE+ccTiALDIiQO3X0h6X9+cI+7uDdpatqGmh/CvXTmsLZL5wyp7JtShP7x7Eteyu4KLYp6RBsH79NOOQfiOAKSzvHT3ODhDsBtBK5NFYQSIp8vMh4LQ/udc7ymS7iJCKSYm8xEdYNuLsiHol7fmg/F8nRLLgtq9ik4yFHyPyxer+dCTdgwkNcJFToHEytf8ahBARozuh+zPQ46h5pbLHbtwU0mK0F7OHwh8dXLJZK5EVSrZdjPjkEHoa4WUQrCYrbjfXRMIV/Yh1QSTjYq1z+Llr08Bzd5Au6KF5J5JjUiU9NdSVVmYnvSv+iaTXa6E0M4yyIH5JWUH0TAh9VsxzwKrLibz4MV0MnwNxX3KjqtspgK9mm+/neKniObS9sYbERT4FezvHwTcxOAqmpf3n4T3C3e5qPkE3LNYcrMW/QC/IT9CovR55r1cfJhvOYyzqceKIQ=
-  file: confluence-space-pdf-export.windows.amd64.exe
+  file:
+    - confluence-space-pdf-export.windows.amd64.exe
+    - confluence-space-pdf-export.darwin.amd64
+    - confluence-space-pdf-export.linux.amd64
   on:
     repo: chrisbbe/Confluence-Space-PDF-Export
+    # Only build binaries for tagged commits
+    tags: true
+    condition: $LATEST = true
