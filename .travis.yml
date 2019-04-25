@@ -10,8 +10,6 @@ matrix:
   - go: tip
 before_install:
 - go get github.com/mitchellh/gox
-install:
-- 
 script:
 - go get -t -v ./...
 - diff -u <(echo -n) <(gofmt -d .)
@@ -22,7 +20,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: NxkJnUMZx1NL5c2tfDw99JtA8Rc356SAkkwIO69SotK+YCuzsJFnci49ix32T3qL7LrytP1ogrzQy9qJbk+9ywTg7x1FRKGGOHsrxsePJNSVyOuaDX6AziqMYYo32C84T9OPBLo0I4uOCj5VbtyhFn1uzANUGtuESAlJYWZhbQGiblUS5AAJtkZhGaqlcdIniAR2GzgCdzK5rKcg9VSoKs9/vUj7fHi7qgnUgPoSBuZFWB3lml5L6alTR61L1m6nXeOumGj+UemcK4otHPgAryjDcYid7nmGzWRCQV4hvZoYOvApDHz3coXhOr4r+bgiUVi+qkSvhdBA1lL5OAYlEkk5giVYIvCWQBJT5tSslqBdqn4mxaoWj4+AfsBVmWMR/Pzb2phizUIWsyiDePeEXiO8sIgI95Kner/vrKBlIFEfGojIH2D2xjrD4KO56LWlFHg3rjaEcxH0RDfGu876hAtRefD2sHyegbELSpEOB9bEj6TgtTjWFwXKo8bOKq4zA8f32PyghHLTsqMcLoFWJzm9k32bD9W1m+DIPK16BqPvQQ/YM6ycEoZxVhZs0RWTiAmHcNWpFRkZ+OByX9+vOwJScTGYCVjwagxHzKTYpys5pqmviH+zp6IRiLy6Astvc6S2p6nb7c+2BZ/gWnp15SK2pfd0FERwbsVqtFEtviU=
+    secure: bnfjrwM9OGbk/h3YW6vZIrmK9J2cfELsj6QMTgAevKyA0kBHvmZdVu5NUkkec3BkdSm16RFWZs3Ef6plYx4BHvn2lLi3Noq6Z+GP3yZX8pHvJrm5uVhrzdJCKSEUt7utX/gkFsDcPUJesNYMPHQ5DODsiVesAkeSBUvA2eUpacNQ3/y8rXfDq/XH+7EFcBmJ3Sm1PoBqUxnLny1B7DoiWfQkuC7eX1RoCliRNjNE+ccTiALDIiQO3X0h6X9+cI+7uDdpatqGmh/CvXTmsLZL5wyp7JtShP7x7Eteyu4KLYp6RBsH79NOOQfiOAKSzvHT3ODhDsBtBK5NFYQSIp8vMh4LQ/udc7ymS7iJCKSYm8xEdYNuLsiHol7fmg/F8nRLLgtq9ik4yFHyPyxer+dCTdgwkNcJFToHEytf8ahBARozuh+zPQ46h5pbLHbtwU0mK0F7OHwh8dXLJZK5EVSrZdjPjkEHoa4WUQrCYrbjfXRMIV/Yh1QSTjYq1z+Llr08Bzd5Au6KF5J5JjUiU9NdSVVmYnvSv+iaTXa6E0M4yyIH5JWUH0TAh9VsxzwKrLibz4MV0MnwNxX3KjqtspgK9mm+/neKniObS9sYbERT4FezvHwTcxOAqmpf3n4T3C3e5qPkE3LNYcrMW/QC/IT9CovR55r1cfJhvOYyzqceKIQ=
   file: confluence-space-pdf-export.windows.amd64.exe
   on:
     repo: chrisbbe/Confluence-Space-PDF-Export
